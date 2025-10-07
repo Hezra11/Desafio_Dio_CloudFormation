@@ -1,0 +1,25 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Template para criar um bucket S3 com versionamento habilitado.",
+  "Resources": {
+    "MyfirstS3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "my-unique-s3-bucket-name-example",
+        "VersioningConfiguration": {
+          "Status": "Enabled"
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "BucketName": {
+      "Description": "Nome do bucket S3 criado.",
+      "Value": { "Ref": "MyfirstS3Bucket" }
+    },
+    "BucketArn": {
+      "Description": "ARN do bucket S3 criado.",
+      "Value": { "Fn::GetAtt": ["MyfirstS3Bucket", "Arn"] }
+    }
+  }
+}
